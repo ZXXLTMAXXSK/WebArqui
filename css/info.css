@@ -1,0 +1,396 @@
+/* General styles */
+* {
+    user-select: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* Personaliza el scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+    height: 10px; /* Altura del scrollbar (en caso de scroll horizontal) */
+  }
+  
+  /* Estilo del fondo del scrollbar */
+  ::-webkit-scrollbar-track {
+    background: white; /* Color del fondo del track */
+  }
+  
+  /* Estilo de la parte deslizante (thumb) */
+  ::-webkit-scrollbar-thumb {
+    background: white; /* Color del thumb */
+    border-radius: 10px;
+  }
+  
+  /* Estilo del thumb cuando se pasa el cursor sobre él */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d3d2d2; /* Color del thumb cuando se pasa el cursor sobre él */
+  }
+  
+
+body {
+    overflow-x: hidden;
+}
+
+nav {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    background-image: url(../img/f1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    text-align: center;
+    justify-content: center;
+}
+
+nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+nav h1 {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 1px 1px 4px white;
+}
+
+/* Menú para escritorio */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: white;
+    padding: 1rem 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: gold;
+}
+
+/* Botón del menú (solo para móviles) */
+.menu-toggle {
+    display: none; /* Oculto por defecto */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 3px;
+    position: absolute; /* Coloca el botón en la parte superior izquierda */
+    top: 1rem;
+    left: 1rem;
+    z-index: 3; /* Asegura que el botón esté encima del menú */
+    cursor: pointer;
+}
+
+.menu-toggle::before,
+.menu-toggle::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    top: 30%;
+    left: 10%;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle::after {
+    top: 60%;
+}
+
+/* Menú oculto (solo para móviles) */
+.menu-links {
+    display: none; /* Oculto inicialmente */
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 2; /* Asegura que el menú esté debajo del botón */
+}
+
+.menu-links.open {
+    display: flex;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: gold;
+}
+
+/* Responsivo: cambia menú en móviles */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Oculta el menú tradicional */
+    }
+
+    .menu-toggle {
+        display: block; /* Muestra el botón del menú */
+    }
+}
+
+
+#seccion1 {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imagen {
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.contenido {
+    flex: 2;
+    max-width: 60%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contenido {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+    .imagen{
+        width: 80%;
+    }
+}
+
+#seccion1 {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.contenedor-reverso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.imagen:hover {
+    transform: translateY(-10px); /* Subir la imagen 10px */
+}
+
+.contenido {
+    flex: 2;
+    max-width: 60%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .contenedor-reverso {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .contenido {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+.text {
+    width: min(100%, 1000px);
+    height: auto;
+    margin: 20px auto;
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(20px); /* Lo posicionamos 20px hacia abajo */
+    transition: opacity 0.6s, transform 0.6s ease-out; /* Transición suave */
+}
+
+.text.visible {
+    opacity: 1; /* Aparece */
+    transform: translateY(0); /* Vuelve a la posición original */
+}
+
+.text p {
+    text-align: center;
+    color: black;
+}
+
+
+#seccion2 {
+    padding: 50px;
+    background-color: #ffffff;
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center; /* Centrar las cartas horizontalmente */
+    align-items: center; /* Centrar las cartas verticalmente */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+}
+
+.card-container {
+    display: grid;  /* Usamos grid para gestionar las filas y columnas */
+    grid-template-columns: repeat(3, 1fr); /* Tres cartas por fila en pantallas grandes */
+    gap: 20px;  /* Espacio entre las cartas */
+    width: 100%;  /* Ancho del contenedor */
+    max-width: 1200px;  /* Limitar el tamaño máximo */
+    padding: 0 20px;  /* Margen de lado */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 250px;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el tamaño total */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Centra los elementos dentro de la carta */
+    transition: transform 0.3s ease;
+    min-height: 350px; /* Asegura que todas las cartas tengan al menos este alto */
+}
+
+.card:hover{
+    transform: translateY(-10px); /* Subir la carta 10px */
+    box-shadow: 1px 1px 5px black;
+    background-color: #f4f4f4;
+}
+
+.card-img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #555;
+    text-align: justify;
+    flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
+}
+
+.card-footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Media Query para pantallas más pequeñas (por ejemplo, tabletas) */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos cartas por fila en pantallas medianas */
+        gap: 15px;
+        padding: 0 10px;  /* Margen ajustado */
+    }
+}
+
+/* Media Query para pantallas muy pequeñas (como teléfonos en modo vertical) */
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr); /* Una carta por fila en pantallas pequeñas */
+        gap: 10px;  /* Espacio reducido entre cartas */
+        padding: 0 10px;  /* Margen reducido */
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
