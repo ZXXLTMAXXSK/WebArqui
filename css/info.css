@@ -1,0 +1,625 @@
+/* General styles */
+* {
+    user-select: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.arriba {
+    position: fixed;
+    bottom: 20px; /* Distancia desde el fondo */
+    right: 20px;  /* Distancia desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .arriba a img {
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s ease; /* Efecto de transición al pasar el mouse */
+  }
+  
+  .arriba a img:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+    filter: drop-shadow(1px 1px 4px black);
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .arriba {
+      bottom: 15px;
+      right: 15px;
+    }
+  
+    .arriba a img {
+      width: 35px; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+  }
+  
+html{
+    scroll-behavior: smooth;
+}
+
+/* Personaliza el scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+    height: 10px; /* Altura del scrollbar (en caso de scroll horizontal) */
+  }
+  
+  /* Estilo del fondo del scrollbar */
+  ::-webkit-scrollbar-track {
+    background: white; /* Color del fondo del track */
+  }
+  
+  /* Estilo de la parte deslizante (thumb) */
+  ::-webkit-scrollbar-thumb {
+    background: white; /* Color del thumb */
+    border-radius: 10px;
+  }
+  
+  /* Estilo del thumb cuando se pasa el cursor sobre él */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d3d2d2; /* Color del thumb cuando se pasa el cursor sobre él */
+  }
+  
+
+body {
+    overflow-x: hidden;
+}
+
+nav {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    background-image: url(../web/img/f1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    text-align: center;
+    justify-content: center;
+}
+
+nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+nav h1 {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 1px 1px 4px white;
+}
+
+/* Menú para escritorio */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: white;
+    padding: 1rem 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: gold;
+}
+
+/* Botón del menú (solo para móviles) */
+.menu-toggle {
+    display: none; /* Oculto por defecto */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 3px;
+    position: absolute; /* Coloca el botón en la parte superior izquierda */
+    top: 1rem;
+    left: 1rem;
+    z-index: 3; /* Asegura que el botón esté encima del menú */
+    cursor: pointer;
+}
+
+.menu-toggle::before,
+.menu-toggle::after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    top: 30%;
+    left: 10%;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle::after {
+    top: 60%;
+}
+
+/* Menú oculto (solo para móviles) */
+.menu-links {
+    display: none; /* Oculto inicialmente */
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 2; /* Asegura que el menú esté debajo del botón */
+}
+
+.menu-links.open {
+    display: flex;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.menu-links a:hover {
+    color: gold;
+}
+
+/* Responsivo: cambia menú en móviles */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Oculta el menú tradicional */
+    }
+
+    .menu-toggle {
+        display: block; /* Muestra el botón del menú */
+    }
+}
+
+
+#seccion1 {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imagen {
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.contenido {
+    flex: 2;
+    max-width: 60%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contenido {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+    .imagen{
+        width: 80%;
+    }
+}
+
+#seccion1 {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.contenedor-reverso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imagen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.imagen:hover {
+    transform: translateY(-10px); /* Subir la imagen 10px */
+}
+
+.contenido {
+    flex: 2;
+    max-width: 60%;
+    text-align: justify ;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .contenedor-reverso {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .contenido {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+.text {
+    width: min(100%, 1000px);
+    height: auto;
+    margin: 20px auto;
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(20px); /* Lo posicionamos 20px hacia abajo */
+    transition: opacity 0.6s, transform 0.6s ease-out; /* Transición suave */
+}
+
+.text.visible {
+    opacity: 1; /* Aparece */
+    transform: translateY(0); /* Vuelve a la posición original */
+}
+
+.text p {
+    text-align: center;
+    color: black;
+}
+
+
+#seccion2 {
+    padding: 50px;
+    background-color: #ffffff;
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center; /* Centrar las cartas horizontalmente */
+    align-items: center; /* Centrar las cartas verticalmente */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+}
+
+.card-container {
+    display: grid;  /* Usamos grid para gestionar las filas y columnas */
+    grid-template-columns: repeat(3, 1fr); /* Tres cartas por fila en pantallas grandes */
+    gap: 20px;  /* Espacio entre las cartas */
+    width: 100%;  /* Ancho del contenedor */
+    max-width: 1200px;  /* Limitar el tamaño máximo */
+    padding: 0 20px;  /* Margen de lado */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 250px;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el tamaño total */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Centra los elementos dentro de la carta */
+    transition: transform 0.3s ease;
+    min-height: 350px; /* Asegura que todas las cartas tengan al menos este alto */
+}
+
+.card:hover{
+    transform: translateY(-10px); /* Subir la carta 10px */
+    box-shadow: 1px 1px 5px black;
+    background-color: #f4f4f4;
+}
+
+.card-img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #555;
+    text-align: justify;
+    flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
+}
+
+.card-footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Media Query para pantallas más pequeñas (por ejemplo, tabletas) */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos cartas por fila en pantallas medianas */
+        gap: 15px;
+        padding: 0 10px;  /* Margen ajustado */
+    }
+}
+
+/* Media Query para pantallas muy pequeñas (como teléfonos en modo vertical) */
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr); /* Una carta por fila en pantallas pequeñas */
+        gap: 10px;  /* Espacio reducido entre cartas */
+        padding: 0 10px;  /* Margen reducido */
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+
+
+
+#seccion3 {
+    position: relative;
+    background: url('../web/img/f1.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#seccion3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de opacidad */
+    z-index: 1;
+}
+
+#seccion3 * {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima del overlay */
+}
+  
+  #seccion3 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 8px white;
+  }
+  
+  #seccion3 form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  #seccion3 input {
+    padding: 10px;
+    margin: 5px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  #seccion3 button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #f06666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #seccion3 button:hover {
+    background-color: #d65555;
+  }
+  
+  /* Estilos para las tarjetas */
+  #seccion3 .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  #seccion3 .card {
+   /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    width: 90%;
+    max-width: 300px;
+    text-align: left;
+  }
+  
+  #seccion3 .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 8px black;
+  }
+  
+  #seccion3 .card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: black;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    #seccion3 h2 {
+      font-size: 2rem;
+    }
+  
+    #seccion3 .card {
+      text-align: center;
+    }
+  }
+
+  #seccion3 {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #seccion3 h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  #seccion3 p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+
+  #seccion3 form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  #seccion3 input,
+  #seccion3 textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  #seccion3 button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #f06666;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #seccion3 button:hover {
+    background-color: #d05555;
+  }
+
+  @media (max-width: 600px) {
+    #seccion3 {
+      padding: 15px;
+    }
+
+    #seccion3 form {
+      max-width: 100%;
+    }
+  }
+
+  .footer {
+    color: black; /* Texto blanco */
+    text-align: center; /* Centrado del texto */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    position: relative;
+    width: 100%; /* Asegura que el pie ocupe todo el ancho */
+    bottom: 0; /* Asegura que se quede en la parte inferior */
+  }
+  
+  .footer p {
+    margin: 0; /* Elimina el margen predeterminado */
+    font-size: 1rem; /* Tamaño de fuente base */
+    line-height: 1.5; /* Altura de línea para mejor legibilidad */
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .footer p {
+      font-size: 0.9rem; /* Reduce el tamaño del texto en pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer p {
+      font-size: 0.8rem; /* Ajusta aún más el tamaño del texto en pantallas muy pequeñas */
+    }
+  }
+  
